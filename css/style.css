@@ -188,6 +188,7 @@ footer{display:flex;padding:60px var(--side-pad);justify-content:space-between;a
 
 /* HAMBURGER MENU — mobile only */
 .hamburger-btn{display:none;}
+.hamburger-menu{display:none;}
 
 @media(max-width:768px){
   .hamburger-btn{
