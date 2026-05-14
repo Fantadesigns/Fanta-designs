@@ -20,6 +20,13 @@
   </ul>
   <a href="#contact" class="nav-cta">Let's talk <i class="ti ti-arrow-up-right"></i></a>
 </nav>
+<button class="hamburger-btn" id="hamburgerBtn" aria-label="Open menu"><i class="ti ti-menu-2"></i></button>
+<div class="hamburger-menu" id="hamburgerMenu">
+  <a href="#projects"><i class="ti ti-layout-grid"></i> Projects</a>
+  <a href="#experience"><i class="ti ti-briefcase"></i> Experience</a>
+  <a href="#services"><i class="ti ti-sparkles"></i> Services</a>
+  <a href="#testimonials"><i class="ti ti-quote"></i> Testimonials</a>
+</div>
 
 <section class="hero">
   <p class="hero-name fade-up fade-up-1">Umeobi Chisomebi</p>
@@ -262,5 +269,25 @@
 </footer>
 
 <script src="js/main.js"></script>
+<script>
+  const btn = document.getElementById('hamburgerBtn');
+  const menu = document.getElementById('hamburgerMenu');
+  if(btn && menu){
+    btn.addEventListener('click', () => {
+      menu.classList.toggle('open');
+      btn.querySelector('i').className = menu.classList.contains('open') ? 'ti ti-x' : 'ti ti-menu-2';
+    });
+    document.addEventListener('click', (e) => {
+      if(!btn.contains(e.target) && !menu.contains(e.target)){
+        menu.classList.remove('open');
+        btn.querySelector('i').className = 'ti ti-menu-2';
+      }
+    });
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      menu.classList.remove('open');
+      btn.querySelector('i').className = 'ti ti-menu-2';
+    }));
+  }
+</script>
 </body>
 </html>

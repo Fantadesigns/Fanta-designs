@@ -17,12 +17,17 @@
   </ul>
   <a href="../index.html#contact" class="nav-cta">Let's talk <i class="ti ti-arrow-up-right"></i></a>
 </nav>
-<div class="cs-return-bar">
-  <a href="../index.html" class="cs-back">
+<button class="hamburger-btn" id="hamburgerBtn" aria-label="Open menu"><i class="ti ti-menu-2"></i></button>
+<div class="hamburger-menu" id="hamburgerMenu">
+  <a href="../index.html#projects"><i class="ti ti-layout-grid"></i> Projects</a>
+  <a href="../index.html#experience"><i class="ti ti-briefcase"></i> Experience</a>
+  <a href="../index.html#services"><i class="ti ti-sparkles"></i> Services</a>
+  <a href="../index.html#testimonials"><i class="ti ti-quote"></i> Testimonials</a>
+</div>
+<div class="cs-return-bar"><div class="cs-return-bar-inner"><a href="../index.html" class="cs-back">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9.57001 5.92999L3.50001 12L9.57001 18.07" stroke="white" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/><path d="M20.5 12L3.67 12" stroke="white" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
     Return to Home
-  </a>
-</div>
+  </a></div></div>
 <div class="cs-hero">
   <div class="cs-tags fade-up fade-up-1">
     <span class="cs-tag"><i class="ti ti-world"></i> Website redesign</span>
@@ -76,5 +81,25 @@
   </footer>
 </div>
 <script src="../js/main.js"></script>
+<script>
+  const btn = document.getElementById('hamburgerBtn');
+  const menu = document.getElementById('hamburgerMenu');
+  if(btn && menu){
+    btn.addEventListener('click', () => {
+      menu.classList.toggle('open');
+      btn.querySelector('i').className = menu.classList.contains('open') ? 'ti ti-x' : 'ti ti-menu-2';
+    });
+    document.addEventListener('click', (e) => {
+      if(!btn.contains(e.target) && !menu.contains(e.target)){
+        menu.classList.remove('open');
+        btn.querySelector('i').className = 'ti ti-menu-2';
+      }
+    });
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      menu.classList.remove('open');
+      btn.querySelector('i').className = 'ti ti-menu-2';
+    }));
+  }
+</script>
 </body>
 </html>
